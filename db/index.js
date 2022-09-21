@@ -1,13 +1,6 @@
-const Sequelize = require('sequelize')
-const {STRING} = Sequelize
-const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/acme_users_db')
+const db = require('./db')
+const User = require('./User')
 
-const User = db.define('user',{
-    name:{
-        type: STRING
-    } 
-    
-})
 
 
 const syncAndSeed = async () =>{

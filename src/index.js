@@ -1,6 +1,7 @@
+import App from './App'
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 const root = document.querySelector('#root');
 
-ReactDOM.render(<hr/>, root)
+ReactDOM.render(<App/>, root)
