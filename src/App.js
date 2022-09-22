@@ -1,40 +1,57 @@
 import React, { Component } from "react"
 import axios from 'axios'
 
+import Users from './Users'
+import Nav from './Nav';
+
+import store from './store'
+
 class App extends Component{
     constructor(){
         super();
-        this.state = {
-            users: []
-        }
+        this.state = store.getState();
     }
     async componentDidMount(){
-        const response = (await axios.get('/api/users')).data;
-        this.setState({users: response})
+        const users = (await axios.get('/api/users')).data;
+        store.subscribe(()=>{
+            this.setState(store.getState())
+        })
+        store.dispatch({
+            type: 'LOAD_USERS',
+            users
+        })
+        store.dispatch({
+            type: 'LOADED'
+        })
+        /*
+        this.setState({
+            users: response,
+            loading: false
+        })
+        */
     }
     render(){
-        const { users } = this.state
+        const { loading } = this.state
+        if(loading){
+            return(
+                <h2>
+                    loading....
+                </h2>
+            )
+        }
         return(
             <div>
-                <h2>
-                    Acme Users ({users.length})
-                </h2>
-                <ul>
-                    {users.length ? 
-                    users.map((user, idx) =>{
-                        return(
-                            <li key={idx}>
-                                {user.name}
-                            </li>
-                        )
-                    })
-                    : 'No Users Found'
-                    }
-                </ul>
+                <Nav/>
+                <Users/>
             </div>
         )
     }
     
 }
+
+
+
+
+
 
 export default App

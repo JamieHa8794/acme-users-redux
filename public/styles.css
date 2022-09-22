@@ -1,3 +1,21 @@
+nav{
+    background-color: #448D76;
+    color:#093426;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    height: 50px;
+}
+nav > a {
+    color: #093426;
+    font-size: xx-large;
+}
 body{
-    background-color: lightblue;
+    background-color: #E7F3EF;
+    color: #23483C;
+}
+h2{
+    color:#79BEA8
 }
