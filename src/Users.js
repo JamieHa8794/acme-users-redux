@@ -8,8 +8,16 @@ class Users extends Component{
             users: store.getState().users
         }
     }
+    // componentDidMount(){
+    //     store.subscribe(()=>{
+    //         this.setState({
+    //             users: store.getState().users
+    //         })
+    //     })
+    // }
     render(){
         const { users } = this.state
+        console.log(this.state)
         return(
             <ul>
                 {users.length ? 
