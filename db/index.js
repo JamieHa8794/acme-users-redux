@@ -1,5 +1,5 @@
 const db = require('./db')
-const User = require('./User')
+const {User} = require('./User')
 
 
 
@@ -13,6 +13,7 @@ const syncAndSeed = async () =>{
         console.log(err)
     }
 }
+
 
 module.exports = {
     db,

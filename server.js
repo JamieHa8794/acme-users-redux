@@ -19,6 +19,15 @@ app.get('/api/users', async (req, res, next)=> {
     }
 })
 
+app.post('/api/users', async (req, res, next)=>{
+    try{
+        res.send(await User.createRandomUser())
+    }
+    catch(err){
+        next(err)
+    }
+})
+
 
 const init = async () =>{
     try{
